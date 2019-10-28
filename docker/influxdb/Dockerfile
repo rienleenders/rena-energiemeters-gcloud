@@ -1,0 +1,23 @@
+FROM influxdb:1.7
+
+ENV INFLUXDB_VERSION=1.7
+
+# ADMIN
+ENV INFLUXDB_HTTP_AUTH_ENABLED=true
+ENV INFLUXDB_ADMIN_ENABLED=true
+ENV INFLUXDB_ADMIN_USER='rena'
+ENV INFLUXDB_ADMIN_PASSWORD='admin_renasolutions'
+# Read/write account
+ENV INFLUXDB_USER='readwrite'
+ENV INFLUXDB_USER_PASSWORD='rw_renasolutions'
+# Read account
+ENV INFLUXDB_READ_USER='read'
+ENV INFLUXDB_READ_USER_PASSWORD='r_renasolutions'
+
+WORKDIR /app
+COPY . /app
+
+# InfluxDB Admin server
+EXPOSE 8083
+# InfluxDB HTTP API
+EXPOSE 8086
